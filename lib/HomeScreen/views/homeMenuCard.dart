@@ -11,7 +11,15 @@ class HomeMenuCard extends StatelessWidget {
       height: 145.h,
       width: 386.w,
       child: Column(
-        children: [],
+        children: [
+          Container(
+            height: 106.h,
+            width: 119.h,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10)
+            ),
+          )
+        ],
       ),
     );
   }
