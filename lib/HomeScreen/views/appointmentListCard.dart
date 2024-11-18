@@ -44,15 +44,25 @@ class Appointmentlistcard extends StatelessWidget {
           SpacerH(27.5.h),
 
           appText.primaryText(
-              text: 'Sabarinath P', fontWeight: FontWeight.w500, fontSize: 14.sp,color: const Color(0xFF232627)),
-
-          SpacerH(5.h),
+                    text: 'Sabarinath P', fontWeight: FontWeight.w500, fontSize: 14.sp,color: const Color(0xFF232627)),
+                    
+                
+                
+                Row(
+                  children: [
+                    appText.primaryText(
+                        text: 'Hair Cut , Colouring , Facial', fontWeight: FontWeight.w400, fontSize: 12.sp,color: const Color(0xFF757D7F)),
+                    SpacerW(110.w),
+                    appText.primaryText(
+                        text: '\$58.00', fontWeight: FontWeight.w700, fontSize: 20.sp,color: const Color(0xFF505864))
+                  ],
+                ),
           
-          appText.primaryText(
-              text: 'Hair Cut , Colouring , Facial', fontWeight: FontWeight.w400, fontSize: 12.sp,color: const Color(0xFF757D7F)),
+          
 
         ],
       ),
     );
   }
 }
+ 
