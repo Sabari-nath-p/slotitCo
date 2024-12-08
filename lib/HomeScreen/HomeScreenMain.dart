@@ -18,7 +18,9 @@ class HomeScreen extends StatelessWidget {
       body: SafeArea(
           child: Column(
         children: [
-          CAppBar(),
+          CAppBar(
+            ScreenName: 'HomeScreen',
+          ),
           SpacerH(30.h),
           Expanded(
               child: Padding(

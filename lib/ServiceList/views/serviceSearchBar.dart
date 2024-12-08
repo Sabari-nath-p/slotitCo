@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sloti_co/main.dart';
 
 class ServiceSearchBar extends StatelessWidget {
-  const ServiceSearchBar({super.key});
+   ServiceSearchBar({super.key});
 
   @override
   Widget build(BuildContext context) {

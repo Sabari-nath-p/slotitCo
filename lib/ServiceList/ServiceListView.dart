@@ -17,7 +17,9 @@ class ServiceListView extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            CAppBar(),
+            CAppBar(
+              ScreenName: "Service View",
+            ),
             SpacerH(30.h),
             ServiceSearchBar(),
             SpacerH(15.h),

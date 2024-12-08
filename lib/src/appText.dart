@@ -11,6 +11,7 @@ class appText {
     return Text(
       text ?? "--:--",
       maxLines: maxLines,
+      textAlign: TextAlign.center,
       style: GoogleFonts.nunitoSans(
           fontWeight: fontWeight,
           fontSize: fontSize,
