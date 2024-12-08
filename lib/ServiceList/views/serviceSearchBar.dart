@@ -1,20 +1,17 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sloti_co/main.dart';
 
-class CAppBar extends StatelessWidget {
-  CAppBar({super.key});
+class ServiceSearchBar extends StatelessWidget {
+  const ServiceSearchBar({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 414.w,
-      height: 40.h,
+      width: 371.w,
+      height: 48.h,
       child: Row(
-        children: [
-
-          
-        ],
+        children: [],
       ),
     );
   }

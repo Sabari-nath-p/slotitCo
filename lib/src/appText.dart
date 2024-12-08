@@ -11,7 +11,7 @@ class appText {
     return Text(
       text ?? "--:--",
       maxLines: maxLines,
-      style: GoogleFonts.poppins(
+      style: GoogleFonts.nunitoSans(
           fontWeight: fontWeight,
           fontSize: fontSize,
           color: color ?? Color(0xFF262626)),

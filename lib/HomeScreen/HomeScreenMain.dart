@@ -14,6 +14,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xffFAFAFA),
       body: SafeArea(
           child: Column(
         children: [
@@ -26,47 +27,54 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 children: [
                   HomeWelcomeCard(),
-                  SpacerH(30.h),
+                  SpacerH(20.h),
                   HomeMenuCard(),
-                  SpacerH(14.h),
-
+                  SpacerH(10.h),
                   Container(
                     alignment: Alignment.center,
                     height: 46.h,
                     width: 358,
                     decoration: BoxDecoration(
-                      color: const Color(0xFF505864),
-                      borderRadius: BorderRadius.circular(23)
-                    ),
+                        color: const Color(0xFF505864),
+                        borderRadius: BorderRadius.circular(23)),
                     child: appText.primaryText(
-                              text: 'ADD BOOKING', fontWeight: FontWeight.w700, fontSize: 12.sp,color: const Color(0xFFFFFFFF)),
+                        text: 'ADD BOOKING',
+                        fontWeight: FontWeight.w700,
+                        fontSize: 12.sp,
+                        color: const Color(0xFFFFFFFF)),
                   ),
-
                   SpacerH(14.h),
-
                   Container(
-                    height: 41.h,
+                    height: 54.h,
                     width: 386.w,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         appText.primaryText(
-                           text: 'Upcoming Appointment ', fontWeight: FontWeight.w500, fontSize: 16.sp,color: const Color(0xFF232627)),
-                           SpacerH(5.h),
+                            text: 'Upcoming Appointment ',
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16.sp,
+                            color: const Color(0xFF232627)),
+                        SpacerH(5.h),
                         Row(
-                            children: [
-                              Image.asset('asset/images/clock.png',height: 14.h,width: 14.w,),
-                              SpacerW(8.w),
-                              appText.primaryText(
-                                  text: 'Mon, July 21 - 09:00', fontWeight: FontWeight.w400, fontSize: 12.sp,color: const Color(0xFF757D7F)),
-                            ],
-                          ),
+                          children: [
+                            Image.asset(
+                              'asset/images/clock.png',
+                              height: 14.h,
+                              width: 14.w,
+                            ),
+                            SpacerW(8.w),
+                            appText.primaryText(
+                                text: 'Mon, July 21 - 09:00',
+                                fontWeight: FontWeight.w400,
+                                fontSize: 12.sp,
+                                color: const Color(0xFF757D7F)),
+                          ],
+                        ),
                       ],
                     ),
                   ),
-
                   SpacerH(16.h),
-                  
                   for (int i = 0; i <= 10; i++) Appointmentlistcard()
                 ],
               ),
