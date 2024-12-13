@@ -13,6 +13,7 @@ class ServiceItemView extends StatelessWidget {
       width: 377.w,
       height: 115.h,
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             width: 100.w,
@@ -22,66 +23,73 @@ class ServiceItemView extends StatelessWidget {
               borderRadius: BorderRadius.circular(14)),
             
           ),
-
+      
           SpacerW(15.w),
-
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  appText.primaryText(
-                        text: 'Name of Service',
-                        fontWeight: FontWeight.w700,
-                        fontSize: 16.sp,
-                        color: const Color(0xFF000000)),
-                  Image.asset('asset/images/rating.png',
-                    height: 28.h,
-                    width: 61.w,
-                )
-                ],
-              ),
-
-              SpacerH(6.h),
-
-              appText.primaryText(
-                    text: 'Loram leads the digital transformation of track maintenance.....',
-                    fontWeight: FontWeight.w500,
-                    fontSize: 12.sp,
-                    color: const Color(0xFF000000),
-                    maxLines: 1,
-                    ),
-
-              SpacerH(10.h),
-              
-              Row(
-                children: [
-                  appText.primaryText(
-                        text: 'Rs 6400',
-                        fontWeight: FontWeight.w600,
-                        fontSize: 17.sp,
-                        color: const Color(0xFF000000)),
-
-                        SpacerW(3.w),
-
-                  appText.primaryText(
-                        text: 'Rs 6400',
-                        fontWeight: FontWeight.w500,
-                        fontSize: 13.sp,
-                        color: const Color(0xFF000000)),
-
-                        SpacerW(60.w),
+      
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    appText.primaryText(
+                          text: 'Name of Service',
+                          fontWeight: FontWeight.w700,
+                          fontSize: 16.sp,
+                          color: const Color(0xFF000000)),
+                    
+                    Image.asset('asset/images/rating.png',
+                      height: 28.h,
+                      width: 61.w,
+                                      )
+                  ],
+                ),
                       
-                  appText.primaryText(
-                        text: '20 Mins',
-                        fontWeight: FontWeight.w500,
-                        fontSize: 13.sp,
-                        color: const Color(0xFF000000)),
-                ],
-              ),
-              
-            ],
+                SpacerH(6.h),
+                      
+                appText.primaryText(
+                      text: 'Loram leads the digital transformation of track maintenance.....',
+                      fontWeight: FontWeight.w500,
+                      fontSize: 12.sp,
+                      color: const Color(0xFF000000),
+                      ),
+                      
+                SpacerH(10.h),
+                
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        appText.primaryText(
+                          text: 'Rs 6400',
+                          fontWeight: FontWeight.w600,
+                          fontSize: 17.sp,
+                          color: const Color(0xFF000000)),
+                      
+                          SpacerW(3.w),
+                      
+                    appText.primaryText(
+                          text: 'Rs 6400',
+                          fontWeight: FontWeight.w500,
+                          fontSize: 13.sp,
+                          color: const Color(0xFF000000)),
+                      ],
+                    ),
+                      
+                        
+                    appText.primaryText(
+                          text: '20 Mins',
+                          fontWeight: FontWeight.w500,
+                          fontSize: 13.sp,
+                          color: const Color(0xFF000000)),
+                  ],
+                ),
+                
+              ],
+            ),
           ),
         ],
       ),

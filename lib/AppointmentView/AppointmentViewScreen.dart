@@ -61,7 +61,7 @@ class AppointmentViewScreen extends StatelessWidget {
                   bottom: 20.h,
                   left: 20.w,
                   right: 20.w,
-                  child: appButton.PrimaryButton(name: "Mark as Complete"))
+                  child: appButton.PrimaryButton(name: "MARK AS COMPLETED"))
             ],
           ))
         ])));
