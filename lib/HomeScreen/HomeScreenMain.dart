@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:sloti_co/HomeScreen/views/appointmentListCard.dart';
 import 'package:sloti_co/HomeScreen/views/homeMenuCard.dart';
 import 'package:sloti_co/HomeScreen/views/homeWelcomeCard.dart';
+import 'package:sloti_co/Schedule/ScheduleScreen.dart';
 import 'package:sloti_co/main.dart';
 import 'package:sloti_co/src/CAppbar.dart';
 import 'package:sloti_co/src/appText.dart';
@@ -52,11 +55,27 @@ class HomeScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        appText.primaryText(
-                            text: 'Upcoming Appointment ',
-                            fontWeight: FontWeight.w500,
-                            fontSize: 16.sp,
-                            color: const Color(0xFF232627)),
+                        Row(
+                          children: [
+                            appText.primaryText(
+                                text: 'Upcoming Appointment ',
+                                fontWeight: FontWeight.w500,
+                                fontSize: 16.sp,
+                                color: const Color(0xFF232627)),
+
+                            InkWell(
+                              onTap: (){
+                                Get.to(()=>ScheduleScreen());
+                              },
+                              child: appText.primaryText(
+                                text: 'See All',
+                                fontWeight: FontWeight.w400,
+                                fontSize: 12.sp,
+                                color: const Color(0xFF232627)),
+                            )
+                          ],
+                        ),
+
                         SpacerH(5.h),
                         Row(
                           children: [
