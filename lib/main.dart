@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/route_manager.dart';
 import 'package:sloti_co/HomeScreen/HomeScreenMain.dart';
+import 'package:sloti_co/Login/loginscreen.dart';
 
 void main() {
   runApp(const MainApp());
@@ -15,7 +16,7 @@ class MainApp extends StatelessWidget {
     return ScreenUtilInit(
         designSize: const Size(414, 896),
         builder: (context, _) {
-          return const GetMaterialApp(home: HomeScreen());
+          return const GetMaterialApp(home: Loginscreen());
         });
   }
 }
