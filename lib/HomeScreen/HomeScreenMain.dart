@@ -5,6 +5,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:sloti_co/HomeScreen/views/appointmentListCard.dart';
 import 'package:sloti_co/HomeScreen/views/homeMenuCard.dart';
 import 'package:sloti_co/HomeScreen/views/homeWelcomeCard.dart';
+import 'package:sloti_co/Login/loginscreen.dart';
 import 'package:sloti_co/Schedule/ScheduleScreen.dart';
 import 'package:sloti_co/main.dart';
 import 'package:sloti_co/src/CAppbar.dart';
@@ -65,7 +66,7 @@ class HomeScreen extends StatelessWidget {
 
                             InkWell(
                               onTap: (){
-                                Get.to(()=>ScheduleScreen());
+                                Get.to(()=>Loginscreen());
                               },
                               child: appText.primaryText(
                                 text: 'See All',
