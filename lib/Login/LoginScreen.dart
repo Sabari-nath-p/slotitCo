@@ -98,6 +98,8 @@ class Loginscreen extends StatelessWidget {
                       ],
                     ),
 
+                    SpacerH(322.h),
+
               Container(
                 child: InkWell(
                   onTap: (){
