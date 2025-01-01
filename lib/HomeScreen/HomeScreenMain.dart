@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:sloti_co/CreateAppointment/CreateAppointmentScreen.dart';
 import 'package:sloti_co/HomeScreen/views/appointmentListCard.dart';
 import 'package:sloti_co/HomeScreen/views/homeMenuCard.dart';
 import 'package:sloti_co/HomeScreen/views/homeWelcomeCard.dart';
@@ -34,18 +35,23 @@ class HomeScreen extends StatelessWidget {
                   SpacerH(20.h),
                   HomeMenuCard(),
                   SpacerH(10.h),
-                  Container(
-                    alignment: Alignment.center,
-                    height: 46.h,
-                    width: 358,
-                    decoration: BoxDecoration(
-                        color: const Color(0xFF505864),
-                        borderRadius: BorderRadius.circular(23)),
-                    child: appText.primaryText(
-                        text: 'ADD BOOKING',
-                        fontWeight: FontWeight.w700,
-                        fontSize: 12.sp,
-                        color: const Color(0xFFFFFFFF)),
+                  InkWell(
+                    onTap: (){
+                          Get.to(()=>CreateAppointmentScreen());
+                              },
+                    child: Container(
+                      alignment: Alignment.center,
+                      height: 46.h,
+                      width: 358,
+                      decoration: BoxDecoration(
+                          color: const Color(0xFF505864),
+                          borderRadius: BorderRadius.circular(23)),
+                      child: appText.primaryText(
+                          text: 'ADD BOOKING',
+                          fontWeight: FontWeight.w700,
+                          fontSize: 12.sp,
+                          color: const Color(0xFFFFFFFF)),
+                    ),
                   ),
                   SpacerH(14.h),
                   Container(

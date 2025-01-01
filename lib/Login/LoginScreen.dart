@@ -100,26 +100,24 @@ class Loginscreen extends StatelessWidget {
 
                     SpacerH(322.h),
 
-              Container(
-                child: InkWell(
-                  onTap: (){
-                    Get.to(()=>HomeScreen(),);
-                  },
-                  child: Container(
-                            alignment: Alignment.center,
-                            height: 60.h,
-                            width: 350.w,
-                            decoration: BoxDecoration(
-                              color: const Color(0xFF505864),
-                              borderRadius: BorderRadius.circular(10)
-                            ),
-                            child: appText.primaryText(
-                                      text: 'Sign In', 
-                                      fontWeight: FontWeight.w700, 
-                                      fontSize: 20.sp,
-                                      color: const Color(0xFFFFFFFF)),
+              InkWell(
+                onTap: (){
+                  Get.to(()=>HomeScreen(),);
+                },
+                child: Container(
+                          alignment: Alignment.center,
+                          height: 60.h,
+                          width: 350.w,
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF505864),
+                            borderRadius: BorderRadius.circular(10)
                           ),
-                ),
+                          child: appText.primaryText(
+                                    text: 'Sign In', 
+                                    fontWeight: FontWeight.w700, 
+                                    fontSize: 20.sp,
+                                    color: const Color(0xFFFFFFFF)),
+                        ),
               )
           
           
