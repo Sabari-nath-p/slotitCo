@@ -42,7 +42,12 @@ class ServiceListView extends StatelessWidget {
                     bottom: 20.h,
                     right: 20.w,
                     left: 20.w,
-                    child: appButton.PrimaryButton(name: "Create Service",onClick: (){CreateServiceScreen();}))
+                    child: appButton.PrimaryButton(name: "Create Service",onClick: (){
+                       Navigator.push(context,MaterialPageRoute(
+                            builder: (context) => CreateServiceScreen(),
+                          ),
+                        );
+                    }))
               ],
             ))
           ],

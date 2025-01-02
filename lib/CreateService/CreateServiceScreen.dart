@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sloti_co/CreateAppointment/views/CAChooseService.dart';
-import 'package:sloti_co/CreateAppointment/views/CAChooseSpecialist.dart';
-import 'package:sloti_co/CreateAppointment/views/CASelectService.dart';
+import 'package:sloti_co/CreateService/views/CSChooseService.dart';
+import 'package:sloti_co/CreateService/views/CSChooseSpecialist.dart';
+import 'package:sloti_co/CreateService/views/CSEnterdetails.dart';
 import 'package:sloti_co/src/CAppbar.dart';
 import 'package:sloti_co/src/appButtons.dart';
 import 'package:sloti_co/src/utils.dart';
@@ -18,7 +18,7 @@ class CreateServiceScreen extends StatelessWidget {
         body: SafeArea(
             child: Column(children: [
           CAppBar(
-            ScreenName: "Appointment View",
+            ScreenName: "Create Service",
           ),
           SpacerH(30.h),
           Expanded(
@@ -36,11 +36,20 @@ class CreateServiceScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         
-                        Cachooseservice(),
-                        SpacerH(17.h),
-                        Caselectservice(),
-                        SpacerH(13.h),
-                        Cachoosespecialist(),
+                        Cschooseservice(),
+                        SpacerH(12.h),
+                        Csenterdetails(),
+                        SpacerH(14.h),
+                        Cschoosespecialist(),
+                         SpacerH(29.h),
+
+                        Container(
+                          height: 144.h,
+                          width: 378.w,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(14),
+                            color: const Color(0xFFFFFFFF)),
+                          ),
                         SpacerH(100.h)
                         
                       ],
