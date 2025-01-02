@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sloti_co/CreateService/CreateServiceScreen.dart';
 import 'package:sloti_co/ServiceList/views/ServiceItemView.dart';
 import 'package:sloti_co/ServiceList/views/serviceSearchBar.dart';
 import 'package:sloti_co/src/CAppbar.dart';
@@ -41,7 +42,7 @@ class ServiceListView extends StatelessWidget {
                     bottom: 20.h,
                     right: 20.w,
                     left: 20.w,
-                    child: appButton.PrimaryButton(name: "Create Service"))
+                    child: appButton.PrimaryButton(name: "Create Service",onClick: (){CreateServiceScreen();}))
               ],
             ))
           ],

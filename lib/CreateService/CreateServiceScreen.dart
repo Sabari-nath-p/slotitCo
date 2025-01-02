@@ -8,8 +8,8 @@ import 'package:sloti_co/src/CAppbar.dart';
 import 'package:sloti_co/src/appButtons.dart';
 import 'package:sloti_co/src/utils.dart';
 
-class CreateAppointmentScreen extends StatelessWidget {
-  const CreateAppointmentScreen({super.key});
+class CreateServiceScreen extends StatelessWidget {
+  const CreateServiceScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +52,7 @@ class CreateAppointmentScreen extends StatelessWidget {
                   bottom: 20.h,
                   left: 20.w,
                   right: 20.w,
-                  child: appButton.PrimaryButton(name: "CONTINUE ( ₹4350 )"))
+                  child: appButton.PrimaryButton(name: "CONTINUE ( ₹4350 )",))
             ],
           ))
         ])));
