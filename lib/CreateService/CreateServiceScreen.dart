@@ -4,8 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sloti_co/CreateService/views/CSChooseService.dart';
 import 'package:sloti_co/CreateService/views/CSChooseSpecialist.dart';
 import 'package:sloti_co/CreateService/views/CSEnterdetails.dart';
+import 'package:sloti_co/CreateService/views/CSThumbnail.dart';
 import 'package:sloti_co/src/CAppbar.dart';
 import 'package:sloti_co/src/appButtons.dart';
+import 'package:sloti_co/src/appText.dart';
 import 'package:sloti_co/src/utils.dart';
 
 class CreateServiceScreen extends StatelessWidget {
@@ -42,14 +44,7 @@ class CreateServiceScreen extends StatelessWidget {
                         SpacerH(14.h),
                         Cschoosespecialist(),
                          SpacerH(29.h),
-
-                        Container(
-                          height: 144.h,
-                          width: 378.w,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(14),
-                            color: const Color(0xFFFFFFFF)),
-                          ),
+                         Csthumbnail(),
                         SpacerH(100.h)
                         
                       ],
