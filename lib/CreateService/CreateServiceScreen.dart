@@ -39,7 +39,7 @@ class CreateServiceScreen extends StatelessWidget {
                       children: [
                         
                         Cschooseservice(),
-                        SpacerH(12.h),
+                        SpacerH(10.h),
                         Csenterdetails(),
                         SpacerH(14.h),
                         Cschoosespecialist(),
