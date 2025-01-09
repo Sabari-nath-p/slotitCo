@@ -23,24 +23,20 @@ class PaymentMenuCard extends StatelessWidget {
             height: 44.h,
             width: 60.w,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(14),
-              color: const Color(0xFFEDECEA)
-            ),
+                borderRadius: BorderRadius.circular(14),
+                color: const Color(0xFFEDECEA)),
           ),
-
           SpacerW(11.w),
-
           appText.primaryText(
-                        text: 'Razor pay ',
-                        fontWeight: FontWeight.w500,
-                        fontSize: 14.sp,
-                        color: const Color(0xFF3D3A38)),
-          
+              text: 'Razor pay ',
+              fontWeight: FontWeight.w500,
+              fontSize: 14.sp,
+              color: const Color(0xFF3D3A38)),
           Spacer(),
-          
-          Image.asset('asset/images/check.png',
-          height: 28.h,
-          width: 28.h,
+          Image.asset(
+            'asset/images/check.png',
+            height: 28.h,
+            width: 28.h,
           )
         ],
       ),
