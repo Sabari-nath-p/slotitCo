@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/route_manager.dart';
 import 'package:sloti_co/AppointmentView/AppointmentViewScreen.dart';
-import 'package:sloti_co/main.dart';
+import 'package:sloti_co/HomeScreen/model/bookingModel.dart';
 import 'package:sloti_co/src/appText.dart';
 import 'package:sloti_co/src/utils.dart';
-import 'package:sloti_co/src/appColor.dart';
 import 'package:sloti_co/src/appText.dart';
 
 class Appointmentlistcard extends StatelessWidget {
-  const Appointmentlistcard({super.key});
+  BookingModel model;
+  Appointmentlistcard({super.key, required this.model});
 
   @override
   Widget build(BuildContext context) {

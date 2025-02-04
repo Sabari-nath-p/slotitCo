@@ -1,91 +1,57 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:get/get.dart';
+import 'package:sloti_co/CreateService/service/CSSController.dart';
 import 'package:sloti_co/src/appText.dart';
+import 'package:sloti_co/src/appTextBox.dart';
 import 'package:sloti_co/src/utils.dart';
 
 class Csenterdetails extends StatelessWidget {
-  const Csenterdetails({super.key});
+  Csenterdetails({super.key});
 
+  CSSController csController = Get.put(CSSController());
   @override
   Widget build(BuildContext context) {
-    return  Container(
+    return Container(
       child: Column(
         children: [
-          _CStextbox('Enter name of  service','Hair cutting.....'),
-
-          Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SpacerH(12.h),
-            appText.primaryText(
-                text: 'About Service',
-                fontWeight: FontWeight.w700,
-                fontSize: 13.sp,
-                color: const Color(0xFF000000)),
-            SpacerH(7.h),
-            Container(
-              padding: EdgeInsets.only(left: 14),
-              height: 117.h,
-              width: 378.w,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                color: const Color(0xFFF5F5F5)
-              ),
-        
-              child: TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'write about service ...',
-                  hintStyle: GoogleFonts.nunitoSans(
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w400
-                  ),
-                  border: InputBorder.none
-                ),
-              ),
-            ),
-          ],
-        ),
-           _CStextbox('Sale Cost of Service','Cost of service'),
-            _CStextbox('Actual Cost of Service','Cost of service'),
-             _CStextbox('Duration of Service','in slots range'),
+          _CStextbox(
+              hint: 'Service Name',
+              controller: csController.serviceNameController),
+          _CStextbox(
+              hint: "Service Description",
+              controller: csController.serviceDescription),
+          _CStextbox(
+              hint: 'Service Cost', controller: csController.serviceCost),
+          _CStextbox(
+              hint: "Actual Cost", controller: csController.strikeThorghPrice),
+          _CStextbox(
+              hint: 'Duration (in min)',
+              controller: csController.durationController),
         ],
       ),
     );
   }
 
-_CStextbox(String titlename,hinttext) {
+  _CStextbox(
+      {TextEditingController? controller,
+      String? hint,
+      bool? ispassword,
+      String? prefixText,
+      bool? isEnable,
+      TextInputType? keyType}) {
     return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SpacerH(12.h),
-            appText.primaryText(
-                text: titlename,
-                fontWeight: FontWeight.w700,
-                fontSize: 13.sp,
-                color: const Color(0xFF000000)),
-            SpacerH(7.h),
-            Container(
-              padding: EdgeInsets.all(14),
-              height: 50.h,
-              width: 378.w,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                color: const Color(0xFFF5F5F5)
-              ),
-        
-              child: TextFormField(
-                decoration: InputDecoration(
-                  hintText: hinttext,
-                  hintStyle: GoogleFonts.nunitoSans(
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w400
-                  ),
-                  border: InputBorder.none
-                ),
-              ),
-            ),
-          ],
-        );
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SpacerH(12.h),
+        appText.primaryText(
+            text: '$hint',
+            fontWeight: FontWeight.w500,
+            fontSize: 16.sp,
+            color: const Color(0xFF3D3A38)),
+        SpacerH(7.h),
+        Apptextbox.tBox(hint: hint, controller: controller, keyType: keyType)
+      ],
+    );
   }
 }

@@ -1,0 +1,137 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:sloti_co/StaffScreen/model/staffModel.dart';
+import 'package:sloti_co/StaffScreen/service/controller.dart';
+import 'package:sloti_co/src/appColor.dart';
+import 'package:sloti_co/src/appText.dart';
+
+class Staffstatuschangecard extends StatelessWidget {
+  StaffModel model;
+
+  Staffstatuschangecard({
+    required this.model,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16.r),
+      ),
+      elevation: 0,
+      backgroundColor: Colors.transparent,
+      child: GetBuilder<StaffController>(builder: (_) {
+        return Container(
+          padding: EdgeInsets.all(20.w),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(16.r),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              if (_.loading)
+                Column(
+                  children: [
+                    SizedBox(
+                        height: 100.h,
+                        width: 100.w,
+                        child: LoadingAnimationWidget.newtonCradle(
+                            color: appColor.primaryColor, size: 24.r)),
+                    SizedBox(height: 16.h),
+                    Text(
+                      'Change Status...',
+                      style: TextStyle(
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                )
+              else
+                Column(
+                  children: [
+                    Icon(
+                      Icons.warning_rounded,
+                      color: Colors.red,
+                      size: 48.sp,
+                    ),
+                    SizedBox(height: 16.h),
+                    Text(
+                      'Change Status',
+                      style: TextStyle(
+                        fontSize: 20.sp,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 8.h),
+                    Text(
+                      'Are you sure you want to ${model.isActive! ? "disable" : "enable"} this user? This action cannot be undone.',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 14.sp,
+                        color: Colors.grey[600],
+                      ),
+                    ),
+                    SizedBox(height: 24.h),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: TextButton(
+                            onPressed: () => Get.back(),
+                            style: TextButton.styleFrom(
+                              padding: EdgeInsets.symmetric(vertical: 12.h),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8.r),
+                                side: BorderSide(color: Colors.grey[300]!),
+                              ),
+                            ),
+                            child: appText.primaryText(
+                              text: 'Cancel',
+                              fontSize: 16.sp,
+                              color: Colors.grey[600],
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 12.w),
+                        Expanded(
+                          child: ElevatedButton(
+                            onPressed: () {
+                              _.updateStaffStatus(!model.isActive!, model.id!);
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.white,
+                              padding: EdgeInsets.symmetric(vertical: 12.h),
+                              shape: RoundedRectangleBorder(
+                                side: BorderSide(
+                                  color: (model.isActive!)
+                                      ? Colors.redAccent
+                                      : Colors.greenAccent,
+                                ),
+                                borderRadius: BorderRadius.circular(8.r),
+                              ),
+                            ),
+                            child: appText.primaryText(
+                              text: '${model.isActive! ? "disable" : "enable"}',
+                              color: (model.isActive!)
+                                  ? Colors.redAccent
+                                  : Colors.greenAccent,
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+            ],
+          ),
+        );
+      }),
+    );
+  }
+}

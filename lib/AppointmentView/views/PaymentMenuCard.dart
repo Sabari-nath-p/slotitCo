@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sloti_co/main.dart';
 import 'package:sloti_co/src/appText.dart';
 import 'package:sloti_co/src/utils.dart';
 

@@ -1,25 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:sloti_co/CreateService/CreateServiceScreen.dart';
+import 'package:sloti_co/ServiceList/Models/ShopServiceModel.dart';
+import 'package:sloti_co/ServiceList/Service/serviceController.dart';
 import 'package:sloti_co/ServiceList/views/ServiceItemView.dart';
 import 'package:sloti_co/ServiceList/views/serviceSearchBar.dart';
-import 'package:sloti_co/src/CAppbar.dart';
 import 'package:sloti_co/src/appButtons.dart';
 import 'package:sloti_co/src/utils.dart';
 
 class ServiceListView extends StatelessWidget {
-  const ServiceListView({super.key});
-
+  ServiceListView({super.key});
+  Servicecontroller ctrl = Get.put(Servicecontroller());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffFAFAFA),
+      backgroundColor: Colors.white, // Color(0xffFAFAFA),
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.white,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, size: 24.sp, color: Colors.black),
+          onPressed: () => Navigator.pop(context),
+        ),
+        title: Text(
+          'My Services',
+          style: TextStyle(
+            fontSize: 18.sp,
+            fontWeight: FontWeight.w500,
+            color: Colors.black,
+          ),
+        ),
+        actions: [],
+      ),
       body: SafeArea(
         child: Column(
           children: [
-            CAppBar(ScreenName: 'Our Service'),
-            SpacerH(30.h),
+            SpacerH(20.h),
             ServiceSearchBar(),
             SpacerH(15.h),
             Expanded(
@@ -30,24 +48,33 @@ class ServiceListView extends StatelessWidget {
                     bottom: 0,
                     right: 0,
                     left: 0,
-                    child: SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          for (int i = 0; i < 10; i++) ServiceItemView(),
-                          SpacerH(100.h)
-                        ],
-                      ),
-                    )),
+                    child: GetBuilder<Servicecontroller>(builder: (_) {
+                      return SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            for (ShopServiceModel model in _.shopservicelist)
+                              ServiceItemView(
+                                model: model,
+                              ),
+                            SpacerH(100.h)
+                          ],
+                        ),
+                      );
+                    })),
                 Positioned(
                     bottom: 20.h,
                     right: 20.w,
                     left: 20.w,
-                    child: appButton.PrimaryButton(name: "Create Service",onClick: (){
-                       Navigator.push(context,MaterialPageRoute(
-                            builder: (context) => CreateServiceScreen(),
-                          ),
-                        );
-                    }))
+                    child: appButton.PrimaryButton(
+                        name: "Create Service",
+                        onClick: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => CreateServiceScreen(),
+                            ),
+                          );
+                        }))
               ],
             ))
           ],

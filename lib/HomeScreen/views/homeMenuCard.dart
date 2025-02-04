@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/route_manager.dart';
-import 'package:sloti_co/HomeScreen/HomeScreenMain.dart';
+import 'package:sloti_co/RoomScreen/RoomScreen.dart';
 import 'package:sloti_co/ServiceList/ServiceListView.dart';
 import 'package:sloti_co/src/appText.dart';
 import 'package:sloti_co/src/utils.dart';
@@ -32,7 +32,9 @@ class HomeMenuCard extends StatelessWidget {
               SpacerW(15.w),
               _menucard('Settlement', 'asset/images/settlement.png', () {}),
               SpacerW(14.w),
-              _menucard('Profile', 'asset/images/profile.png', () {}),
+              _menucard('Profile', 'asset/images/profile.png', () {
+                Get.to(() => RoomScreen(), transition: Transition.rightToLeft);
+              }),
             ],
           ),
         ],

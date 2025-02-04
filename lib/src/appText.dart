@@ -7,14 +7,17 @@ class appText {
       int? maxLines,
       FontWeight? fontWeight,
       Color? color,
+      TextDecoration? decoration,
+      TextAlign align = TextAlign.center,
       double? fontSize}) {
     return Text(
       text ?? "--:--",
       maxLines: maxLines,
-      textAlign: TextAlign.center,
+      textAlign: align,
       style: GoogleFonts.nunitoSans(
           fontWeight: fontWeight,
           fontSize: fontSize,
+          decoration: decoration,
           color: color ?? Color(0xFF262626)),
     );
   }

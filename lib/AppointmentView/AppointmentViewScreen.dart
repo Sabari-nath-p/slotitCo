@@ -3,7 +3,6 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sloti_co/AppointmentView/views/AppointmentDetailsCard.dart';
 import 'package:sloti_co/AppointmentView/views/PaymentMenuCard.dart';
-import 'package:sloti_co/HomeScreen/views/appointmentListCard.dart';
 import 'package:sloti_co/src/CAppbar.dart';
 import 'package:sloti_co/src/appButtons.dart';
 import 'package:sloti_co/src/appText.dart';
@@ -16,7 +15,7 @@ class AppointmentViewScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color(0xffFAFAFA),
+        backgroundColor: const Color(0xffFAFAFA),
         body: SafeArea(
             child: Column(children: [
           CAppBar(
@@ -61,7 +60,9 @@ class AppointmentViewScreen extends StatelessWidget {
                   bottom: 20.h,
                   left: 20.w,
                   right: 20.w,
-                  child: appButton.PrimaryButton(name: "MARK AS COMPLETED"))
+                  child: appButton.PrimaryButton(
+                    name: "MARK AS COMPLETED",
+                  ))
             ],
           ))
         ])));
