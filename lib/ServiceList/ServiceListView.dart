@@ -8,11 +8,20 @@ import 'package:sloti_co/ServiceList/Service/serviceController.dart';
 import 'package:sloti_co/ServiceList/views/ServiceItemView.dart';
 import 'package:sloti_co/ServiceList/views/serviceSearchBar.dart';
 import 'package:sloti_co/src/appButtons.dart';
+import 'package:sloti_co/src/appText.dart';
 import 'package:sloti_co/src/utils.dart';
 
-class ServiceListView extends StatelessWidget {
+class ServiceListView extends StatefulWidget {
   ServiceListView({super.key});
+
+  @override
+  State<ServiceListView> createState() => _ServiceListViewState();
+}
+
+class _ServiceListViewState extends State<ServiceListView> {
   Servicecontroller ctrl = Get.put(Servicecontroller());
+  TextEditingController searchController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +47,12 @@ class ServiceListView extends StatelessWidget {
         child: Column(
           children: [
             SpacerH(20.h),
-            ServiceSearchBar(),
+            ServiceSearchBar(
+              Controller: searchController,
+              onchanged: () {
+                setState(() {});
+              },
+            ),
             SpacerH(15.h),
             Expanded(
                 child: Stack(
@@ -53,8 +67,20 @@ class ServiceListView extends StatelessWidget {
                         child: Column(
                           children: [
                             for (ShopServiceModel model in _.shopservicelist)
-                              ServiceItemView(
-                                model: model,
+                              if (searchController.text.isEmpty ||
+                                  model.name!.toLowerCase().contains(
+                                      searchController.text.toLowerCase()))
+                                ServiceItemView(
+                                  model: model,
+                                ),
+                            if (!_.pageLoading && _.shopservicelist.isEmpty)
+                              Container(
+                                height: 500.h,
+                                alignment: Alignment.center,
+                                child: appText.primaryText(
+                                    text:
+                                        "Currenlty no shop service in you shop. Please create \nservice to continue",
+                                    fontSize: 14.sp),
                               ),
                             SpacerH(100.h)
                           ],

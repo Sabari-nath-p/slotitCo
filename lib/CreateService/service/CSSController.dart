@@ -82,18 +82,19 @@ class CSSController extends GetxController {
 
   CreateShopService() async {
     String imagelink = "";
-    if (image != null) {
-      imagelink = await fileUpload(image!.path);
-    }
+
     if (checkData() == true) {
       loading = false;
       update();
       return false;
     } else if (loading == true) {
-      loading = false;
-      update();
       return false;
     } else {
+      loading = true;
+      update();
+      if (image != null) {
+        imagelink = await fileUpload(image!.path);
+      }
       try {
         final response = await post(
             Uri.parse(Endpoint.baseUrl + Endpoint.shopService),
@@ -113,8 +114,7 @@ class CSSController extends GetxController {
               "image": imagelink
             }));
         var data = json.decode(response.body);
-        print(response.body);
-        print(response.statusCode);
+
         if (response.statusCode == 200 || response.statusCode == 201) {
           if (data["status"] == true) {
             Servicecontroller ctrl = Get.put(Servicecontroller());

@@ -77,7 +77,8 @@ class CreateAppointmentScreen extends StatelessWidget {
                               Get.to(() => ConfirmAppointmentScreen(),
                                   transition: Transition.rightToLeft);
                             },
-                            name: "CONTINUE ( ₹${_.calculatePrice()} )"),
+                            name:
+                                "CONTINUE ( ₹${_.calculatePrice(isActual: true)} )"),
                       ))
               ],
             ))

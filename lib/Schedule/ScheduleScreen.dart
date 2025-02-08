@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:intl/intl.dart';
+import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
+import 'package:sloti_co/ConfirmAppointment/View/calenderViewCard.dart';
+import 'package:sloti_co/HomeScreen/views/appointmentListCard.dart';
+import 'package:sloti_co/Schedule/controller/BookingController.dart';
 import 'package:sloti_co/src/CAppbar.dart';
 import 'package:sloti_co/src/appText.dart';
 import 'package:sloti_co/src/utils.dart';
@@ -13,102 +19,67 @@ class ScheduleScreen extends StatefulWidget {
 
 class _ScheduleScreenState extends State<ScheduleScreen> {
   bool select = true;
+  BKController bkCtrl = Get.put(BKController());
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      backgroundColor: Color(0xffFAFAFA),
-      body: SafeArea(child: Column(
+    return Scaffold(
+      backgroundColor: Colors.white, // Color(0xffFAFAFA),
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.white,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, size: 24.sp, color: Colors.black),
+          onPressed: () => Navigator.pop(context),
+        ),
+        title: Text(
+          'My Appointments',
+          style: TextStyle(
+            fontSize: 18.sp,
+            fontWeight: FontWeight.w500,
+            color: Colors.black,
+          ),
+        ),
+        actions: [],
+      ),
+      body: SafeArea(
+          child: Column(
         children: [
-          CAppBar(ScreenName: 'Schedule'),
-          SpacerH(30.h),
-          Expanded(child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Container(
-                  width: 386.w,
-                  height: 50.h,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(25.w),
-                    color: const Color(0xFFF2F2F2),),
-                  child: Stack(
-                    children: [
-                          AnimatedAlign(
-                          alignment:select ? Alignment.centerLeft : Alignment.centerRight,
-                          duration: Duration(milliseconds: 200),
-                          curve: Curves.easeInOut,
-                          child: Container(
-                          margin: EdgeInsets.all(6),
-                          width: 185.w,
-                          height: 38.h,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(25),
-                            ),
-                          ),
-                        ),
-
-
-
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Expanded(
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      setState(() {
-                                      select = true;
-                                    });
-                                    },
-                                      child: Container(
-                                        width: 50,
-                                        height: 50,
-                                        color: Colors.transparent,
-                                        alignment: Alignment.center,
-                                          child: appText.primaryText(
-                                             text: 'Past',
-                                             fontWeight: FontWeight.w600,
-                                             fontSize: 12.sp,
-                                              color: select ?const Color(0xFF505864):const Color(0xFF232627)),
-                                             
-                                      ),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      setState(() {
-                                      select = false;
-                                });
-                                },
-                                      child: Container(
-                                        width: 50,
-                                        height: 50,
-                                        color: Colors.transparent,
-                                        alignment: Alignment.center,
-                                        child: appText.primaryText(
-                                            text: 'Upcoming',
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 12.sp,
-                                            color: select ?const Color(0xFF232627):const Color(0xFF505864)),
-                                      ),
-                                  ),
-                                ),
-                            ],
-                          ),
-
-
-
-
-                    ],
-                  ),
-                )
-
-              ],
-            ),
+          //  SpacerH(10.h),
+          WeekCalendarView(
+            isPrev: true,
+            onDateSelected: (p0) {
+              bkCtrl.selectedDate = p0;
+              bkCtrl.update();
+              bkCtrl.fetchBooking(
+                  filter: DateFormat("yyyy-MM-dd").format(bkCtrl.selectedDate));
+            },
+          ),
+          Expanded(
+              child: SmartRefresher(
+            controller: bkCtrl.refreshController,
+            enablePullDown: true,
+            enablePullUp: true,
+            onRefresh: () {
+              bkCtrl.fetchBooking(
+                  filter: DateFormat("yyyy-MM-dd").format(bkCtrl.selectedDate));
+            },
+            onLoading: () {
+              bkCtrl.loadMore(
+                  filter: DateFormat("yyyy-MM-dd").format(bkCtrl.selectedDate));
+            },
+            child: GetBuilder<BKController>(builder: (_) {
+              return SingleChildScrollView(
+                child: Column(
+                  children: [
+                    for (var model in bkCtrl.bookingList)
+                      Appointmentlistcard(model: model)
+                  ],
+                ),
+              );
+            }),
           ))
         ],
       )),
-
     );
   }
 }

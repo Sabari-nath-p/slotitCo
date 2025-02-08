@@ -3,19 +3,21 @@ import 'dart:convert';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart';
+import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 import 'package:sloti_co/RoomScreen/Model/roomModel.dart';
 import 'package:sloti_co/main.dart';
 import 'package:sloti_co/src/endpoint.dart';
 
 class RMcontroller extends GetxController {
-  bool pageLoading = false;
+  bool pageLoading = true;
   bool loading = false;
+  RefreshController reloadController = RefreshController(initialRefresh: true);
   List<RoomModel> roomList = [];
   fetchRoomList() async {
     pageLoading = true;
-
+    reloadController.resetNoData();
+    roomList = [];
     try {
-      roomList = [];
       final response = await get(
           Uri.parse(Endpoint.baseUrl +
               Endpoint.room +
@@ -29,7 +31,12 @@ class RMcontroller extends GetxController {
       } else {}
     } catch (e) {}
 
+    if (roomList.isEmpty) {
+      reloadController.loadNoData();
+    }
+
     pageLoading = false;
+    reloadController.refreshCompleted();
     update();
   }
 
@@ -123,6 +130,6 @@ class RMcontroller extends GetxController {
   void onInit() {
     // TODO: implement onInit
     super.onInit();
-    fetchRoomList();
+    // fetchRoomList();
   }
 }

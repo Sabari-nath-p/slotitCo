@@ -22,12 +22,17 @@ class Csenterdetails extends StatelessWidget {
               hint: "Service Description",
               controller: csController.serviceDescription),
           _CStextbox(
-              hint: 'Service Cost', controller: csController.serviceCost),
+              hint: 'Sale Cost',
+              controller: csController.serviceCost,
+              keyType: TextInputType.number),
           _CStextbox(
-              hint: "Actual Cost", controller: csController.strikeThorghPrice),
+              hint: "Strike through",
+              controller: csController.strikeThorghPrice,
+              keyType: TextInputType.number),
           _CStextbox(
               hint: 'Duration (in min)',
-              controller: csController.durationController),
+              controller: csController.durationController,
+              keyType: TextInputType.number),
         ],
       ),
     );

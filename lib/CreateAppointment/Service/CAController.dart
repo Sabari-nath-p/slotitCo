@@ -9,6 +9,7 @@ import 'package:intl/intl.dart';
 import 'package:sloti_co/ConfirmAppointment/View/timeCardView.dart';
 import 'package:sloti_co/CreateAppointment/Model/TimeSlotModel.dart';
 import 'package:sloti_co/CreateAppointment/Model/timeRangeModel.dart';
+import 'package:sloti_co/HomeScreen/controller/HomeController.dart';
 import 'package:sloti_co/RoomScreen/Model/roomModel.dart';
 import 'package:sloti_co/ServiceList/Models/ServiceModel.dart';
 import 'package:sloti_co/ServiceList/Models/ShopServiceModel.dart';
@@ -33,23 +34,23 @@ class CAController extends GetxController {
   List<TimeRangeModel> TimeRange = [
     TimeRangeModel(
       title: "Morning",
-      from: "08:00",
-      to: "12:00",
+      from: "08:00:00",
+      to: "12:00:00",
     ),
     TimeRangeModel(
       title: "Noon",
-      from: "12:00",
-      to: "14:00",
+      from: "12:00:00",
+      to: "14:00:00",
     ),
     TimeRangeModel(
       title: "Evening",
-      from: "04:00",
-      to: "18:00",
+      from: "14:00:00",
+      to: "18:00:00",
     ),
     TimeRangeModel(
       title: "Night",
-      from: "18:00",
-      to: "10:00",
+      from: "18:00:00",
+      to: "22:00:00",
     ),
   ];
 
@@ -58,13 +59,14 @@ class CAController extends GetxController {
 
   ServiceModel? selectedService; // selected service type
   fetchRoomList() async {
+    roomList = [];
+
     String filter =
         "?filter.shop_id=${user!.shopId}&shop_service_ids=${selectedSSI.join(",")}";
     if (selectedSSI.isEmpty) {
       filter = filter + "&shop_service_ids=" + selectedSSI.join(",");
     }
     try {
-      roomList = [];
       final response = await get(
           Uri.parse(Endpoint.baseUrl + Endpoint.room + filter),
           headers: authHead);
@@ -156,10 +158,9 @@ class CAController extends GetxController {
       final response = await get(
           Uri.parse(Endpoint.baseUrl +
               Endpoint.timeSlot +
-              "?date=${formateDate(selectedDate!)}&shop_rooms_id=${selectedRoom!.id}&shop_service_ids=${selectedSSI.join(",")}&time_from=${selectedTimeRange!.from!}&time_to=${selectedTimeRange!.from!}"),
+              "?date=${DateFormat("yyyy-MM-dd").format(selectedDate!)}&shop_room_id=${selectedRoom!.id}&shop_service_ids=${selectedSSI.join(",")}&time_from=${selectedTimeRange!.from!}&time_to=${selectedTimeRange!.to!}"),
           headers: authHead);
-      print(response.body);
-      print(response.statusCode);
+
       if (response.statusCode == 200) {
         var data = json.decode(response.body);
 
@@ -221,9 +222,13 @@ class CAController extends GetxController {
               }));
 
       if (response.statusCode == 201) {
+        HomeController hmCtrl = Get.put(HomeController());
+        hmCtrl.fetchTodayBooking();
         Get.back();
         Get.back();
       } else {
+        print(response.body);
+        print(response.statusCode);
         var data = json.decode(response.body);
         Fluttertoast.showToast(msg: data["message"]);
       }

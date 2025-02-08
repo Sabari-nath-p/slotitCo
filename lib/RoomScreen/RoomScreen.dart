@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 import 'package:sloti_co/RoomScreen/Model/roomModel.dart';
 import 'package:sloti_co/RoomScreen/View/CreateRoomSheet.dart';
 import 'package:sloti_co/RoomScreen/View/RoomCardView.dart';
@@ -115,14 +116,29 @@ class RoomScreen extends StatelessWidget {
               Expanded(
                   child: Padding(
                 padding: EdgeInsets.all(12.0.w),
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      for (RoomModel model in _.roomList)
-                        RoomCard(
-                          model: model,
-                        )
-                    ],
+                child: SmartRefresher(
+                  controller: _.reloadController,
+                  onRefresh: () {
+                    _.fetchRoomList();
+                  },
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        for (RoomModel model in _.roomList)
+                          RoomCard(
+                            model: model,
+                          ),
+                        if (!_.pageLoading && _.roomList.isEmpty)
+                          Container(
+                              height: 500.h,
+                              child: Center(
+                                child: appText.primaryText(
+                                  text:
+                                      "Currenlty no shop room in you shop. Please create shop room by clicking + icon in top right coner",
+                                ),
+                              ))
+                      ],
+                    ),
                   ),
                 ),
               )),

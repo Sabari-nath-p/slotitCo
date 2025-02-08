@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:sloti_co/CreateAppointment/CreateAppointmentScreen.dart';
 import 'package:sloti_co/HomeScreen/controller/HomeController.dart';
+import 'package:sloti_co/Schedule/ScheduleScreen.dart';
+import 'package:sloti_co/main.dart';
 import 'package:sloti_co/src/appText.dart';
 import 'package:sloti_co/src/utils.dart';
 
@@ -22,13 +25,13 @@ class HomeWelcomeCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           appText.primaryText(
-              text: 'Good Morning',
+              text: hmCtrl.getTimeBasedGreeting(),
               fontWeight: FontWeight.w500,
               fontSize: 22.sp,
               color: const Color(0xFF232627)),
           SpacerH(4.h),
           appText.primaryText(
-              text: 'Hi, Dianne Ameter',
+              text: 'Hi, ${user!.firstName ?? ""}',
               fontWeight: FontWeight.w400,
               fontSize: 12.sp,
               color: const Color(0xFF757D7F)),
@@ -39,18 +42,23 @@ class HomeWelcomeCard extends StatelessWidget {
               fontSize: 14.sp,
               color: const Color(0xFF232627)),
           SpacerH(8.h),
-          Container(
-            alignment: Alignment.center,
-            height: 46.h,
-            width: 358.w,
-            decoration: BoxDecoration(
-                color: const Color(0xFF505864),
-                borderRadius: BorderRadius.circular(23)),
-            child: appText.primaryText(
-                text: '${hmCtrl.bookingList.length} BOOKING TODAY',
-                fontWeight: FontWeight.w500,
-                fontSize: 12.sp,
-                color: const Color(0xFFFFFFFF)),
+          InkWell(
+            onTap: () {
+              Get.to(() => ScheduleScreen(), transition: Transition.downToUp);
+            },
+            child: Container(
+              alignment: Alignment.center,
+              height: 46.h,
+              width: 358.w,
+              decoration: BoxDecoration(
+                  color: const Color(0xFF505864),
+                  borderRadius: BorderRadius.circular(23)),
+              child: appText.primaryText(
+                  text: '${hmCtrl.bookingList.length} BOOKING TODAY',
+                  fontWeight: FontWeight.w500,
+                  fontSize: 12.sp,
+                  color: const Color(0xFFFFFFFF)),
+            ),
           )
         ],
       ),

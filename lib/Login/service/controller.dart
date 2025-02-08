@@ -33,17 +33,17 @@ class AuthController extends GetxController {
       if (Response.statusCode == 201) {
         Fluttertoast.showToast(msg: "Logined Successful");
         loading = false;
-        UserModel model = UserModel.fromJson(json.decode(Response.body));
+        user = UserModel.fromJson(json.decode(Response.body)["data"]["user"]);
         SharedPreferences pref = await SharedPreferences.getInstance();
         pref.setString("LOGIN", "IN");
 
         pref.setString(
           "USER_ID",
-          model.id ?? "",
+          user!.id ?? "",
         );
         pref.setString(
           "EMAIL",
-          model.email ?? "",
+          user!.email ?? "",
         );
 
         token = json.decode(Response.body)["data"]["tokens"]["access_token"];

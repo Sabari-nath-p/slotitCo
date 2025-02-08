@@ -92,46 +92,57 @@ class _CreateServiceScreenState extends State<CreateServiceScreen> {
               return Expanded(
                   child: Stack(
                 children: [
-                  Positioned(
-                    top: 0,
-                    right: 0,
-                    left: 0,
-                    bottom: 0,
-                    child: SingleChildScrollView(
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 12.w),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            if (widget.model == null) Cschooseservice(),
-                            if (widget.model == null) SpacerH(10.h),
-                            Csenterdetails(),
-                            SpacerH(14.h),
-                            CSChooseGender(),
-                            SpacerH(14.h),
-                            Cschoosespecialist(),
-                            SpacerH(29.h),
-                            Csthumbnail(),
-                            SpacerH(100.h)
-                          ],
+                  if (_.roomList.isNotEmpty)
+                    Positioned(
+                      top: 0,
+                      right: 0,
+                      left: 0,
+                      bottom: 0,
+                      child: SingleChildScrollView(
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 12.w),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              if (widget.model == null) Cschooseservice(),
+                              if (widget.model == null) SpacerH(10.h),
+                              Csenterdetails(),
+                              SpacerH(14.h),
+                              CSChooseGender(),
+                              SpacerH(14.h),
+                              Cschoosespecialist(),
+                              SpacerH(29.h),
+                              Csthumbnail(),
+                              SpacerH(100.h)
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  Positioned(
-                      bottom: 20.h,
-                      left: 20.w,
-                      right: 20.w,
-                      child: appButton.PrimaryButton(
-                        isloading: cssctlr.loading,
-                        onClick: () {
-                          if (widget.model == null)
-                            cssctlr.CreateShopService();
-                          else
-                            cssctlr.updateShopService(widget.model!.id!);
-                        },
-                        name: (widget.model != null) ? "UPDATE" : "CREATE",
-                      ))
+                  if (_.roomList.isEmpty)
+                    Container(
+                      height: 500.h,
+                      alignment: Alignment.center,
+                      child: appText.primaryText(
+                          text:
+                              "Currenlty no shop room in you shop. Please create \nshop room to continue",
+                          fontSize: 14.sp),
+                    ),
+                  if (_.roomList.isNotEmpty)
+                    Positioned(
+                        bottom: 20.h,
+                        left: 20.w,
+                        right: 20.w,
+                        child: appButton.PrimaryButton(
+                          isloading: cssctlr.loading,
+                          onClick: () {
+                            if (widget.model == null)
+                              cssctlr.CreateShopService();
+                            else
+                              cssctlr.updateShopService(widget.model!.id!);
+                          },
+                          name: (widget.model != null) ? "UPDATE" : "CREATE",
+                        ))
                 ],
               ));
             });

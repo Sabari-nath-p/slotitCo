@@ -26,7 +26,7 @@ class Cschoosespecialist extends StatelessWidget {
             Padding(
               padding: EdgeInsets.fromLTRB(14, 14, 0, 10),
               child: appText.primaryText(
-                  text: 'Choose Specialist',
+                  text: 'Choose Room',
                   fontWeight: FontWeight.w500,
                   fontSize: 16.sp,
                   color: const Color(0xFF3D3A38)),
@@ -90,7 +90,7 @@ class Cschoosespecialist extends StatelessWidget {
             ),
           ),
           appText.primaryText(
-              text: 'Wisteria',
+              text: model.name,
               fontWeight: FontWeight.w500,
               fontSize: 12.sp,
               color: Color(0xFF3D3A38)),

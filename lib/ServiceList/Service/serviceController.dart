@@ -13,9 +13,7 @@ class Servicecontroller extends GetxController {
   List<ShopServiceModel> shopservicelist = [];
   List<ServiceModel> serviceList = [];
   List<RoomModel> roomList = [];
-  bool pageLoading = false;
-
-
+  bool pageLoading = true;
 
   fetchShopServices() async {
     pageLoading = true;
@@ -23,7 +21,9 @@ class Servicecontroller extends GetxController {
     try {
       shopservicelist = [];
       final response = await get(
-          Uri.parse(Endpoint.baseUrl + Endpoint.shopService),
+          Uri.parse(Endpoint.baseUrl +
+              Endpoint.shopService +
+              "?filter.shop_id=${user!.shopId}"),
           headers: authHead);
 
       if (response.statusCode == 200) {

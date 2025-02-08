@@ -80,7 +80,7 @@ class ConfirmAppointmentScreen extends StatelessWidget {
                         _.createAppointment();
                       },
                       isloading: _.loading,
-                      name: "CONFIRM ( ₹${_.calculatePrice()} )"),
+                      name: "CONFIRM ( ₹${_.calculatePrice(isActual: true)} )"),
                 ))
           ],
         );

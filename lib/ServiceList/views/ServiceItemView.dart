@@ -93,6 +93,7 @@ class ServiceItemView extends StatelessWidget {
                               model.strikeThroughCharge != "")
                             appText.primaryText(
                                 text: 'Rs ${model.strikeThroughCharge}',
+                                decoration: TextDecoration.lineThrough,
                                 fontWeight: FontWeight.w500,
                                 fontSize: 13.sp,
                                 color: const Color(0xFF000000)),

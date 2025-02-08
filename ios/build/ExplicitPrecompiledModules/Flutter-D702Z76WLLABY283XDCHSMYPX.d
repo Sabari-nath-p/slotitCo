@@ -20,4 +20,5 @@ moduledependenciestarget: \
   /Users/sabarinathp/Works/sloti_co/build/ios/Debug-iphonesimulator/Flutter.framework/Headers/FlutterEngineGroup.h \
   /Users/sabarinathp/Works/sloti_co/build/ios/Debug-iphonesimulator/Flutter.framework/Headers/FlutterHeadlessDartRunner.h \
   /Users/sabarinathp/Works/sloti_co/build/ios/Debug-iphonesimulator/Flutter.framework/Headers/FlutterPluginAppLifeCycleDelegate.h \
-  /Users/sabarinathp/Works/sloti_co/build/ios/Debug-iphonesimulator/Flutter.framework/Headers/FlutterViewController.h
+  /Users/sabarinathp/Works/sloti_co/build/ios/Debug-iphonesimulator/Flutter.framework/Headers/FlutterViewController.h \
+  /Users/sabarinathp/Works/sloti_co/build/ios/Debug-iphonesimulator/Flutter.framework/Headers/FlutterHourFormat.h

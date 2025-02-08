@@ -17,7 +17,7 @@ Future<String> fileUpload(String path) async {
       privateKey: "private_/ixEFm8zmvLC+cRnpsQoDFgPdQ0=");
 }
 
-String formateDate(DateTime date) => DateFormat("dd-MM-YYYY").format(date);
+String formateDate(DateTime date) => DateFormat("dd-MM-yyyy").format(date);
 
 bool isDateSame(DateTime date1, DateTime date2) =>
     date1.year == date2.year &&

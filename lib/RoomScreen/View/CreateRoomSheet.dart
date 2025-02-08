@@ -215,10 +215,10 @@ class _CreateRoomSheetState extends State<CreateRoomSheet> {
                                   _.update();
                                   if (file != null)
                                     imageUrl = await fileUpload(file!.path);
-                                  else if (widget.model!.image != null &&
-                                      widget.model!.image != "") {
-                                    imageUrl = widget.model!.image!;
-                                  }
+                                  // else if (widget.model!.image != null &&
+                                  //     widget.model!.image != "") {
+                                  //   imageUrl = widget.model!.image!;
+                                  // }
                                   RoomModel md = RoomModel(
                                       shopId: user!.shopId,
                                       name: roomName.text.trim(),

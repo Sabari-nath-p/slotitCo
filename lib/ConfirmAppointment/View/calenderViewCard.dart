@@ -9,11 +9,15 @@ import 'package:sloti_co/src/utils.dart';
 
 class WeekCalendarView extends StatefulWidget {
   final Function(DateTime)? onDateSelected;
+  bool isPrev = false;
   final DateTime? initialDate;
 
-  const WeekCalendarView({
+  
+
+  WeekCalendarView({
     Key? key,
     this.onDateSelected,
+    this.isPrev = false,
     this.initialDate,
   }) : super(key: key);
 
@@ -40,7 +44,9 @@ class _WeekCalendarViewState extends State<WeekCalendarView> {
   void _selectDate(DateTime date) {
     print(date);
     print(date.isAtSameMomentAs(DateTime.now()));
-    if (date.isAfter(DateTime.now()) || isDateSame(date, DateTime.now())) {
+    if (date.isAfter(DateTime.now()) ||
+        isDateSame(date, DateTime.now()) ||
+        widget.isPrev) {
       setState(() {
         _selectedDate = date;
       });
