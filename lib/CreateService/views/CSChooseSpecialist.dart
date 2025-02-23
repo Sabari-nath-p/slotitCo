@@ -31,11 +31,14 @@ class Cschoosespecialist extends StatelessWidget {
                   fontSize: 16.sp,
                   color: const Color(0xFF3D3A38)),
             ),
-            Row(
-              //  mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                for (RoomModel model in _.roomList) _specialistbox(model),
-              ],
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                //  mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  for (RoomModel model in _.roomList) _specialistbox(model),
+                ],
+              ),
             )
           ],
         ),
@@ -83,9 +86,12 @@ class Cschoosespecialist extends StatelessWidget {
                         fit: BoxFit.cover,
                       ),
                     )
-                  : Icon(
-                      Icons.image_not_supported_outlined,
-                      color: Colors.grey.withOpacity(.7),
+                  : ClipRRect(
+                      borderRadius: BorderRadius.circular(14),
+                      child: Image.asset(
+                        "asset/images/image.png",
+                        fit: BoxFit.cover,
+                      ),
                     ),
             ),
           ),

@@ -11,4 +11,5 @@ class Endpoint {
   static String createBooking = "/bookings/admin";
   static String bookings = "/bookings";
   static String analytics = "/analytics";
+  static String shops = "/shops";
 }

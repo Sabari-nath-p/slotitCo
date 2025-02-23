@@ -60,6 +60,7 @@ class MainApp extends StatelessWidget {
         designSize: Size(414, 896),
         builder: (context, _) {
           return GetMaterialApp(
+              debugShowCheckedModeBanner: false,
               theme: ThemeData(
                   primaryColor: appColor.primaryColor,
                   colorScheme: Theme.of(context).colorScheme.copyWith(

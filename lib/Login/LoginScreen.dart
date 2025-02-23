@@ -81,25 +81,25 @@ class Loginscreen extends StatelessWidget {
                     ispassword: true,
                     controller: _.passwordText),
                 SpacerH(10.h),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    SpacerW(10),
-                    appText.primaryText(
-                        text: "Having issues ?",
-                        color: Color(0xFF000000),
-                        fontWeight: FontWeight.w600,
-                        fontSize: 14.sp),
-                    InkWell(
-                      onTap: () {},
-                      child: appText.primaryText(
-                          text: " Reset Password",
-                          color: Color(0xFF505864),
-                          fontWeight: FontWeight.w500,
-                          fontSize: 13.sp),
-                    ),
-                  ],
-                ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.end,
+                //   children: [
+                //     SpacerW(10),
+                //     appText.primaryText(
+                //         text: "Having issues ?",
+                //         color: Color(0xFF000000),
+                //         fontWeight: FontWeight.w600,
+                //         fontSize: 14.sp),
+                //     InkWell(
+                //       onTap: () {},
+                //       child: appText.primaryText(
+                //           text: " Reset Password",
+                //           color: Color(0xFF505864),
+                //           fontWeight: FontWeight.w500,
+                //           fontSize: 13.sp),
+                //     ),
+                //   ],
+                // ),
                 SpacerH(322.h),
 
                 appButton.PrimaryButton(

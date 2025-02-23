@@ -38,9 +38,12 @@ class ServiceItemView extends StatelessWidget {
                         fit: BoxFit.fill,
                       ),
                     )
-                  : Icon(
-                      Icons.image,
-                      color: Colors.black.withOpacity(.5),
+                  : ClipRRect(
+                      borderRadius: BorderRadius.circular(14.r),
+                      child: Image.asset(
+                        "asset/images/image.png",
+                        fit: BoxFit.fill,
+                      ),
                     ),
               decoration: BoxDecoration(
                   color: const Color(0xFFEDECEA),

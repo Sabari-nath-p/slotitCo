@@ -23,11 +23,17 @@ import 'package:sloti_co/src/utils.dart';
 //   }
 // }
 
-class StaffScreen extends StatelessWidget {
-  // final StaffController controller = Get.put(StaffController());
+class StaffScreen extends StatefulWidget {
+  @override
+  State<StaffScreen> createState() => _StaffScreenState();
+}
 
+class _StaffScreenState extends State<StaffScreen> {
+  // final StaffController controller = Get.put(StaffController());
   RMcontroller rmctrl = Get.put(RMcontroller());
+
   StaffController sfctrl = Get.put(StaffController());
+  TextEditingController controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -89,6 +95,10 @@ class StaffScreen extends StatelessWidget {
                     SizedBox(width: 8.w),
                     Expanded(
                       child: TextField(
+                        controller: controller,
+                        onChanged: (Value) {
+                          setState(() {});
+                        },
                         decoration: InputDecoration(
                           hintText: 'Search Staffs',
                           border: InputBorder.none,
@@ -103,25 +113,26 @@ class StaffScreen extends StatelessWidget {
                 ),
               ),
             ),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              padding: EdgeInsets.symmetric(horizontal: 16.w),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  StaffFilterChip(
-                    label: "All",
-                    isSelected: _.selectedFilter == "All",
-                  ),
-                  for (var data in rmctrl.roomList)
+            if (false)
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                padding: EdgeInsets.symmetric(horizontal: 16.w),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
                     StaffFilterChip(
-                      label: data.name!,
-                      isSelected: _.selectedFilter == data.name,
+                      label: "All",
+                      isSelected: _.selectedFilter == "All",
                     ),
-                ],
+                    for (var data in rmctrl.roomList)
+                      StaffFilterChip(
+                        label: data.name!,
+                        isSelected: _.selectedFilter == data.name,
+                      ),
+                  ],
+                ),
               ),
-            ),
-            SpacerH(32.h),
+            SpacerH(10.h),
             Expanded(
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 12.w),
@@ -129,9 +140,13 @@ class StaffScreen extends StatelessWidget {
                   child: Column(
                     children: [
                       for (StaffModel model in _.staffList)
-                        StaffCardView(
-                          model: model,
-                        )
+                        if (controller.text.trim().isEmpty ||
+                            model.firstName!
+                                .toLowerCase()
+                                .contains(controller.text.toLowerCase().trim()))
+                          StaffCardView(
+                            model: model,
+                          )
                     ],
                   ),
                 ),

@@ -32,7 +32,7 @@ class Appointmentlistcard extends StatelessWidget {
         margin: EdgeInsets.only(
           bottom: 8.h,
         ),
-        height: 160.h,
+        height: 150.h,
         decoration: BoxDecoration(
             color: const Color(0xFFFFFFFF),
             borderRadius: BorderRadius.circular(14)),
@@ -74,7 +74,7 @@ class Appointmentlistcard extends StatelessWidget {
                   Container(
                     width: 80.w,
                     alignment: Alignment.center,
-                    height: 20.h,
+                    height: 21.h,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8.r),
                         color: Colors.green),

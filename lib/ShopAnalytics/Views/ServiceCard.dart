@@ -37,12 +37,19 @@ class ServiceCard extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            padding: EdgeInsets.all(12.w),
+            //  padding: EdgeInsets.all(12.w),
+            width: 60.w,
+            height: 60.w,
             decoration: BoxDecoration(
               color: color,
               borderRadius: BorderRadius.circular(12.r),
             ),
-            child: Icon(icon, size: 24.sp),
+            child: ClipRRect(
+                borderRadius: BorderRadius.circular(12.r),
+                child: Image.asset(
+                  "asset/images/image.png",
+                  fit: BoxFit.cover,
+                )),
           ),
           SizedBox(width: 16.w),
           Expanded(

@@ -55,6 +55,7 @@ class Cachoosespecialist extends StatelessWidget {
   _specialistbox({required RoomModel model, bool isSeleted = false}) {
     return InkWell(
       onTap: () {
+        print(model.image);
         caController.selectedRoom = model;
         caController.selectedDate = DateTime.now();
         caController.selectedTimeRange = caController.TimeRange.first;
@@ -72,7 +73,7 @@ class Cachoosespecialist extends StatelessWidget {
               borderRadius: BorderRadius.circular(14.r),
               color: const Color(0xFFEDECEA),
             ),
-            child: model.image != null
+            child: model.image != null && model.image != ""
                 ? ClipRRect(
                     borderRadius: BorderRadius.circular(14.r),
                     child: Image.network(
@@ -80,7 +81,13 @@ class Cachoosespecialist extends StatelessWidget {
                       fit: BoxFit.fill,
                     ),
                   )
-                : null,
+                : ClipRRect(
+                    borderRadius: BorderRadius.circular(14.r),
+                    child: Image.asset(
+                      "asset/images/image.png",
+                      fit: BoxFit.fill,
+                    ),
+                  ),
           ),
           appText.primaryText(
               text: model.name,

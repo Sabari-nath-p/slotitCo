@@ -24,7 +24,7 @@ class AnalyticsPage extends StatelessWidget {
           onPressed: () => Navigator.pop(context),
         ),
         title: Text(
-          'My Appointments',
+          'My Analytics',
           style: TextStyle(
             fontSize: 18.sp,
             fontWeight: FontWeight.w500,
@@ -48,7 +48,7 @@ class AnalyticsPage extends StatelessWidget {
                     fontWeight: FontWeight.w600,
                   ),
                   Spacer(),
-                  FilterDateCard(),
+                  if (MediaQuery.of(context).size.width < 600) FilterDateCard(),
                 ],
               ),
               SizedBox(height: 16.h),
@@ -58,7 +58,7 @@ class AnalyticsPage extends StatelessWidget {
                     child: AnalyticCard(
                       title: 'Total Booking',
                       value: '${anCtrl.totalBooking}',
-                      subtitle: 'Last 7 day analytics',
+                      subtitle: '',
                     ),
                   ),
                   SizedBox(width: 16.w),
@@ -66,7 +66,7 @@ class AnalyticsPage extends StatelessWidget {
                     child: AnalyticCard(
                       title: 'Total Earning',
                       value: '₹${anCtrl.totalEarning}',
-                      subtitle: 'Last 7 day analytics',
+                      subtitle: '',
                     ),
                   ),
                 ],
@@ -75,7 +75,7 @@ class AnalyticsPage extends StatelessWidget {
               AnalyticCard(
                 title: 'Total Customers',
                 value: '${anCtrl.totalUser}',
-                subtitle: 'Last 7 day analytics',
+                subtitle: '',
               ),
               SizedBox(height: 24.h),
               appText.primaryText(

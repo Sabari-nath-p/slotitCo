@@ -125,7 +125,13 @@ class Caselectservice extends StatelessWidget {
                               fit: BoxFit.cover,
                             ),
                           )
-                        : Icon(Icons.image_not_supported_outlined),
+                        : ClipRRect(
+                            borderRadius: BorderRadius.circular(10),
+                            child: Image.asset(
+                              "asset/images/image.png",
+                              fit: BoxFit.cover,
+                            ),
+                          ),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: const Color(0xFFEDECEA)),

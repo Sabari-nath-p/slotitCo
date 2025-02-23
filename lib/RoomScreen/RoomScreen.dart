@@ -10,9 +10,18 @@ import 'package:sloti_co/RoomScreen/service/RMcontroller.dart';
 import 'package:sloti_co/StaffScreen/StaffScreen.dart';
 import 'package:sloti_co/src/appText.dart';
 
-class RoomScreen extends StatelessWidget {
+class RoomScreen extends StatefulWidget {
   RoomScreen({Key? key}) : super(key: key);
+
+  @override
+  State<RoomScreen> createState() => _RoomScreenState();
+}
+
+class _RoomScreenState extends State<RoomScreen> {
   RMcontroller roomCtrl = Get.put(RMcontroller());
+
+  TextEditingController controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,6 +99,10 @@ class RoomScreen extends StatelessWidget {
                       SizedBox(width: 8.w),
                       Expanded(
                         child: TextField(
+                          controller: controller,
+                          onChanged: (value) {
+                            setState(() {});
+                          },
                           decoration: InputDecoration(
                             hintText: 'Search Rooms',
                             border: InputBorder.none,
@@ -125,9 +138,12 @@ class RoomScreen extends StatelessWidget {
                     child: Column(
                       children: [
                         for (RoomModel model in _.roomList)
-                          RoomCard(
-                            model: model,
-                          ),
+                          if (controller.text.trim().isEmpty ||
+                              model.name!.toLowerCase().contains(
+                                  controller.text.toLowerCase().trim()))
+                            RoomCard(
+                              model: model,
+                            ),
                         if (!_.pageLoading && _.roomList.isEmpty)
                           Container(
                               height: 500.h,

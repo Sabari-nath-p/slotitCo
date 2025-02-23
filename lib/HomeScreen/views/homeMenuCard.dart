@@ -13,7 +13,7 @@ class HomeMenuCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 160.h,
+      height: 165.h,
       width: 386.w,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -26,17 +26,17 @@ class HomeMenuCard extends StatelessWidget {
           SpacerH(17.h),
           Row(
             children: [
-              _menucard('Manage', 'asset/images/manage.png', () {
+              _menucard('Manage', 'asset/images/serviceIcon.png', () {
                 Get.to(() => ServiceListView(),
                     transition: Transition.rightToLeft);
               }),
               SpacerW(15.w),
-              _menucard('Analytics', 'asset/images/settlement.png', () {
+              _menucard('Analytics', 'asset/images/analytics.png', () {
                 Get.to(() => AnalyticsPage(),
                     transition: Transition.rightToLeft);
               }),
               SpacerW(14.w),
-              _menucard('Shop Room', 'asset/images/profile.png', () {
+              _menucard('Shop Room', 'asset/images/staffs.png', () {
                 Get.to(() => RoomScreen(), transition: Transition.rightToLeft);
               }),
             ],
@@ -70,8 +70,9 @@ _menucard(String text, image, Function onclick) {
                   borderRadius: BorderRadius.circular(10)),
               child: Image.asset(
                 image,
-                height: 30.h,
-                width: 30.w,
+                // scale: 1.4,
+                height: 40.h,
+                width: 40.w,
               )),
           SpacerH(14.h),
           appText.primaryText(

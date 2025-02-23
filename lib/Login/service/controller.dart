@@ -53,7 +53,7 @@ class AuthController extends GetxController {
           "Accept": "application/json",
           "Content-Type": "application/json"
         };
-        Get.to(() => HomeScreen(), transition: Transition.rightToLeft);
+        Get.offAll(() => HomeScreen(), transition: Transition.rightToLeft);
         update();
       } else {
         Fluttertoast.showToast(

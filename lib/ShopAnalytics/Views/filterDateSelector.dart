@@ -178,8 +178,10 @@ class _FilterDateCardState extends State<FilterDateCard> {
   Widget build(BuildContext context) {
     return Container(
       width: 130.w,
+      // height: 90.h,
       padding: EdgeInsets.all(16.w),
       child: DropdownButtonFormField(
+        isDense: true,
         value: selectedPeriod,
         decoration: InputDecoration(border: InputBorder.none),
         items: periods.map((FilterTimeModel period) {
