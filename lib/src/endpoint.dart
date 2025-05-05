@@ -1,5 +1,5 @@
 class Endpoint {
-  static String baseUrl = "http://api.slotit.in/api";
+  static String baseUrl = "https://api.slotit.in/api";
   static String auth = "/auth/login";
   static String profile = "/auth/me";
   static String room = "/shop-rooms";

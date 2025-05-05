@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -63,6 +64,7 @@ class AuthController extends GetxController {
         update();
       }
     } catch (e) {
+      log(e.toString());
       loading = false;
       update();
     }
